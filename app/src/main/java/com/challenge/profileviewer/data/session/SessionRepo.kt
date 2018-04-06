@@ -13,9 +13,9 @@ import javax.inject.Singleton
 @Singleton
 class SessionRepo @Inject() constructor(retrofit: Retrofit) {
 
-    val sessionNetworkAPI: SessionNetworkAPI = retrofit.create(SessionNetworkAPI::class.java)
+    private val sessionNetworkAPI: SessionNetworkAPI = retrofit.create(SessionNetworkAPI::class.java)
 
     fun openSession(email: String, password: String): Single<Session> {
-        return sessionNetworkAPI.openSession(SessionRequest(email, password)).firstOrError()
+        return sessionNetworkAPI.openSession(SessionRequest(email, password))
     }
 }

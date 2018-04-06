@@ -9,5 +9,5 @@ import retrofit2.http.POST
 
 interface SessionNetworkAPI {
     @POST("sessions/new")
-    fun openSession(@Body request: SessionRequest): Observable<Session>
+    fun openSession(@Body request: SessionRequest): Single<Session>
 }
