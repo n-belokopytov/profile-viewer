@@ -30,3 +30,4 @@
 # Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
 -dontwarn okio.**
+-keep class android.support.v7.widget.** { *; }

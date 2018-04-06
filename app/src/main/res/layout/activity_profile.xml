@@ -23,8 +23,9 @@
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="centerInside"
             android:contentDescription="@string/avatar_description" />
 
         <LinearLayout

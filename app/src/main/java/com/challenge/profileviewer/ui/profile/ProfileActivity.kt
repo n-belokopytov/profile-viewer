@@ -10,6 +10,7 @@ import android.view.View
 import com.challenge.profileviewer.R
 import com.challenge.profileviewer.data.user.model.User
 import com.challenge.profileviewer.ui.login.LoginActivity
+import com.challenge.profileviewer.ui.util.CircleTransformation
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
@@ -84,7 +85,7 @@ class ProfileActivity : DaggerAppCompatActivity() {
         user?.let {
             email.text = user.email
             password.text = user.password
-            Picasso.get().load(user.avatarUrl).into(avatar)
+            Picasso.get().load(user.avatarUrl).placeholder(R.mipmap.ic_account_circle).transform(CircleTransformation()).into(avatar)
         }
     }
 
