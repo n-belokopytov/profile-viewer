@@ -12,19 +12,20 @@ class LoadProfileUsecase @Inject constructor(private val userRepo: UserRepo) {
     private var disposable: CompositeDisposable = CompositeDisposable()
 
     fun loadProfile(profileModelLiveData: MutableLiveData<ProfileModel>) {
-        profileModelLiveData.value = profileModelLiveData.value?.copy(command = ProfileViewModel.Command.SHOW_LOADING)
+        profileModelLiveData.value =
+                profileModelLiveData.value?.copy(command = ProfileViewModel.Command.SHOW_LOADING)
         userRepo.getCurrentUser()
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe({
-                    profileModelLiveData.postValue(ProfileModel(ProfileViewModel.Command.STANDBY, it))
-                }, {
-                    if(it is SecurityException) {
-                        profileModelLiveData.postValue(profileModelLiveData.value?.copy(command = ProfileViewModel.Command.RELOGIN))
-                    } else {
-                        profileModelLiveData.postValue(profileModelLiveData.value?.copy(command = ProfileViewModel.Command.SHOW_ERROR))
-                    }
-                })
+            .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.io())
+            .subscribe({
+                profileModelLiveData.postValue(ProfileModel(ProfileViewModel.Command.STANDBY, it))
+            }, {
+                if (it is SecurityException) {
+                    profileModelLiveData.postValue(profileModelLiveData.value?.copy(command = ProfileViewModel.Command.RELOGIN))
+                } else {
+                    profileModelLiveData.postValue(profileModelLiveData.value?.copy(command = ProfileViewModel.Command.SHOW_ERROR))
+                }
+            })
     }
 
     fun clean() {

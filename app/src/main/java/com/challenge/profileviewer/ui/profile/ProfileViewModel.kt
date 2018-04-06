@@ -5,8 +5,10 @@ import com.challenge.profileviewer.domain.usecases.ChangeAvatarUsecase
 import com.challenge.profileviewer.domain.usecases.LoadProfileUsecase
 import javax.inject.Inject
 
-class ProfileViewModel @Inject constructor(private val loadProfileUsecase: LoadProfileUsecase,
-                                           private val changeAvatarUsecase: ChangeAvatarUsecase) {
+class ProfileViewModel @Inject constructor(
+    private val loadProfileUsecase: LoadProfileUsecase,
+    private val changeAvatarUsecase: ChangeAvatarUsecase
+) {
     enum class Command { STANDBY, SHOW_LOADING, ADD_PHOTO, SHOW_ERROR, RELOGIN }
 
     var profileModelLiveData: MutableLiveData<ProfileModel> = MutableLiveData()
@@ -31,5 +33,9 @@ class ProfileViewModel @Inject constructor(private val loadProfileUsecase: LoadP
     fun clean() {
         changeAvatarUsecase.clean()
         loadProfileUsecase.clean()
+    }
+
+    fun refresh() {
+        loadProfileUsecase.loadProfile(profileModelLiveData)
     }
 }

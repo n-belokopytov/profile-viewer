@@ -5,16 +5,13 @@ import android.animation.AnimatorListenerAdapter
 import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.challenge.profileviewer.R
-import dagger.android.DaggerActivity
 import dagger.android.support.DaggerAppCompatActivity
-
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -107,22 +104,22 @@ class LoginActivity : DaggerAppCompatActivity() {
 
         login_form.visibility = if (show) View.GONE else View.VISIBLE
         login_form.animate()
-                .setDuration(shortAnimTime)
-                .alpha((if (show) 0 else 1).toFloat())
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        login_form.visibility = if (show) View.GONE else View.VISIBLE
-                    }
-                })
+            .setDuration(shortAnimTime)
+            .alpha((if (show) 0 else 1).toFloat())
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    login_form.visibility = if (show) View.GONE else View.VISIBLE
+                }
+            })
 
         progress.visibility = if (show) View.VISIBLE else View.GONE
         progress.animate()
-                .setDuration(shortAnimTime)
-                .alpha((if (show) 1 else 0).toFloat())
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        progress.visibility = if (show) View.VISIBLE else View.GONE
-                    }
-                })
+            .setDuration(shortAnimTime)
+            .alpha((if (show) 1 else 0).toFloat())
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    progress.visibility = if (show) View.VISIBLE else View.GONE
+                }
+            })
     }
 }

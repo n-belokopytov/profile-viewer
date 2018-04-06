@@ -14,6 +14,8 @@ interface UserNetworkAPI {
     fun getUser(@Path("user") userId: String): Single<User>
 
     @POST("/users/{user}/avatar")
-    fun changeAvatar(@Path("user") userId: String,
-                     @Body changeAvatarRequest: ChangeAvatarRequest): Single<ChangeAvatarResponse>
+    fun changeAvatar(
+        @Path("user") userId: String,
+        @Body changeAvatarRequest: ChangeAvatarRequest
+    ): Single<ChangeAvatarResponse>
 }

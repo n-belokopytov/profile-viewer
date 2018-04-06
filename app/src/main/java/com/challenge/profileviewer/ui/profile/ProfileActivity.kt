@@ -47,6 +47,11 @@ class ProfileActivity : DaggerAppCompatActivity() {
         avatar.setOnClickListener { viewModel.changeAvatarClicked() }
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.refresh()
+    }
+
     private fun openLoginActivity() {
         startActivity(LoginActivity.getIntent(this))
     }
@@ -56,23 +61,23 @@ class ProfileActivity : DaggerAppCompatActivity() {
 
         user_profile.visibility = if (show) View.GONE else View.VISIBLE
         user_profile.animate()
-                .setDuration(shortAnimTime)
-                .alpha((if (show) 0 else 1).toFloat())
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        user_profile.visibility = if (show) View.GONE else View.VISIBLE
-                    }
-                })
+            .setDuration(shortAnimTime)
+            .alpha((if (show) 0 else 1).toFloat())
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    user_profile.visibility = if (show) View.GONE else View.VISIBLE
+                }
+            })
 
         progress.visibility = if (show) View.VISIBLE else View.GONE
         progress.animate()
-                .setDuration(shortAnimTime)
-                .alpha((if (show) 1 else 0).toFloat())
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        progress.visibility = if (show) View.VISIBLE else View.GONE
-                    }
-                })
+            .setDuration(shortAnimTime)
+            .alpha((if (show) 1 else 0).toFloat())
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    progress.visibility = if (show) View.VISIBLE else View.GONE
+                }
+            })
     }
 
     private fun showUserProfile(user: User?) {
@@ -90,8 +95,8 @@ class ProfileActivity : DaggerAppCompatActivity() {
 
     fun openChangeAvatarActivity() {
         CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this)
+            .setGuidelines(CropImageView.Guidelines.ON)
+            .start(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

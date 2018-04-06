@@ -1,7 +1,7 @@
 package com.challenge.profileviewer.domain.usecases
 
 import android.arch.lifecycle.MutableLiveData
-import com.challenge.profileviewer.data.common.Config
+import com.challenge.profileviewer.data.common.NetworkConfig
 import com.challenge.profileviewer.data.session.SessionRepo
 import com.challenge.profileviewer.data.user.UserRepo
 import com.challenge.profileviewer.ui.login.LoginModel
@@ -27,7 +27,7 @@ class LoginUserUsecase @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .subscribe({
-                    Config.SESSION_TOKEN = it.token
+                    NetworkConfig.SESSION_TOKEN = it.token
                     userRepo.storeNewUserCreds(it.userId, email, password)
                         .subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe()
                     loginModelLiveData.postValue(LoginModel(command = LoginViewModel.Command.FINISH))

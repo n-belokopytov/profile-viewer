@@ -3,8 +3,6 @@ package com.challenge.profileviewer.data.user.sources
 import android.content.SharedPreferences
 import com.challenge.profileviewer.data.user.model.User
 import com.google.gson.Gson
-import io.reactivex.Single
-import android.R.id.edit
 import javax.inject.Inject
 
 

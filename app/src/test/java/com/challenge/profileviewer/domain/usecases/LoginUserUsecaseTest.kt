@@ -2,7 +2,7 @@ package com.challenge.profileviewer.domain.usecases
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.MutableLiveData
-import com.challenge.profileviewer.data.common.Config
+import com.challenge.profileviewer.data.common.NetworkConfig
 import com.challenge.profileviewer.data.session.SessionRepo
 import com.challenge.profileviewer.data.session.model.Session
 import com.challenge.profileviewer.data.user.UserRepo
@@ -82,7 +82,7 @@ class LoginUserUsecaseTest {
         loginUserUsecase.openSession(loginModelLiveData, TEST_EMAIL, TEST_PASSWORD)
 
         assert(loginModelLiveData.value?.command == LoginViewModel.Command.FINISH)
-        assert(Config.SESSION_TOKEN == TEST_TOKEN)
+        assert(NetworkConfig.SESSION_TOKEN == TEST_TOKEN)
         verify(sessionRepo).openSession(TEST_EMAIL, TEST_PASSWORD)
         verify(userRepo).storeNewUserCreds(TEST_USER_ID, TEST_EMAIL, TEST_PASSWORD)
         verify(observer).invoke(LoginModel(LoginViewModel.Command.SHOW_LOADING))
