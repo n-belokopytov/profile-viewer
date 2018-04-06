@@ -24,10 +24,12 @@ There is a makeshift configuration file that supports changing the host url for 
  
   - I have discovered https://my-json-server.typicode.com/ - a git-baseed mock-server. It is a great tool that I will be using more in the future. Unfortunately it does not support customizable POST responses.
  
+ - I would not have stored the password in any way shape or form locally in production environment, using more of an OAUTH2 approach with expireable tokens and I would not send it over the network in plaintext. I would have it transferred in a form of a salted hash.
+ 
  - I would say that the requirements to make a tested, clean, well decoupled solution with 2 screens and 3 endpoints was something that was quite challenging to do in the allocated time and it made me think hard about prioritisation.
  
   ## Top 3 things missing
  - Tests that cover the other use cases and high-level repo operations
  - "Local" build target that uses Mockito to mock responses from Network data sources
- - Using Crypto to store the password in an encrypted state
+ - Error handling leaves much to be desired
  
