@@ -31,5 +31,5 @@ There is a makeshift configuration file that supports changing the host url for 
   ## Top 3 things missing
  - Tests that cover the other use cases and high-level repo operations
  - "Local" build target that uses Mockito to mock responses from Network data sources
- - Error handling leaves much to be desired
+ - Error handling and form validation in ViewModel
  
