@@ -22,7 +22,7 @@ There is a makeshift configuration file that supports changing the host url for 
  ## General thoughts and learnings
  - The requirement to store password offline and a lack of userid in the response from the server presented an interesting challenge and was a personal high point for me.
  
-  - I have discovered https://my-json-server.typicode.com/ - a git-baseed mock-server. It is a great tool that I will be using more in the future. Unfortunately it does not support customizable POST responses.
+  - I have discovered https://my-json-server.typicode.com/ - a git-based mock-server. It is a great tool that I will be using more in the future. Unfortunately it does not support customizable POST responses.
  
  - I would not have stored the password in any way shape or form locally in production environment, using more of an OAUTH2 approach with expireable tokens and I would not send it over the network in plaintext. I would have it transferred in a form of a salted hash.
  
